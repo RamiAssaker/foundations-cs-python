@@ -1,23 +1,30 @@
-def displayMenu():
-    choice =  int(input("Please choose from the following:\n"+"\t1- Add Matrices\n"+"\t2- Check Rotation\n" + "\t3- Invert Dictionary\n" + "\t4- Convert Matrix to Dictionary\n" + "\t5- Check Palindrome\n" + "\t6- Search for an Element & Merge Sort\n" + "\t7- Exit\n"))
-    if choice > 7:
-        print("Invalid input,\n" + "Please choose a number between 1 and 7")
-    elif choice == 1:
-        addMatrix()
+dict = {
+        "12110":["Rami",25,"177cm"],
+        "12120":["Bisi",23,"155cm"],
+        "12130":["Bobi",24,"180cm"],
+        }
+print(dict)
+for key, value in dict.items():
+    print("Student ID:",key)
+    print("Information:",value)
+dict["12140"] = ["Alphonse",36,"182cm"]
+print(dict)
 
-def main():
-    name = input("Please enter your name:")
-    print("Welcome",name,"!\n")
-    displayMenu()
- 
-def addMatrix(matrix1, matrix2):
-    addition = []
-    for i in range(len(matrix1)):
-        row = []
-        for j in range(len(matrix1[i])):
-            row.append(matrix1[i][j] + matrix2[i][j])
-        addition.append(row)
-    return addition
+del dict["12140"]
+print(dict)
+print(dict["12120"][2])
 
-main()
+print()
+
+classroom = {}
+list = []
+num_students = int(input("Please enter number of students:"))
+num_attributes = int(input("Please enter number of attributes:"))
+
+for i in range (num_students):
+    attribute = input("Enter the attribute for the student:")     
+    list.append(attribute)
+print(list)
+
+
 
