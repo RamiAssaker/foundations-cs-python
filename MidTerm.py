@@ -14,9 +14,16 @@ def openTab(open_dict): #Function to display that a tab is opened
 
 def closeTab(open_dict):
     close = input("Which tab would you like to close:")
+    tabs_delete = [] #we need a list to insert the key we want to delete since we cannot delete from dictionary during iteration(error:dictionary changed size during iteration ) 
     for i in open_dict:
         if close == i:
-            del open_dict[i]
+            tabs_delete.append(i)
+        else:
+          tabs_delete.append(list(open_dict.keys())[-1])
+     
+    for j in tabs_delete:
+        if j in open_dict:
+            del open_dict[j]
     print(open_dict)
 
 
