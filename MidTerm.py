@@ -33,28 +33,34 @@ def switchTab(open_dict):
     switch = input("Which tab do you want to switch to:")
     #tab_switched = []
     for key in open_dict:
+        print("The key is:",key)
+        print("The switch is:",switch)
         if switch == key:
-            url = open_dict[key]
-            if url:
-                url2 = url[0]
-                response = requests.get(url2)
-            #print(response)
-            if response.status_code == 200:
-                print(response.text)
-            
+            url = open_dict[key][0]
+            response = requests.get(url)
+            print("The key  value is:",open_dict[key])
+            print(url)
+        else:
+            url = open_dict[key][-1]
+            response = requests.get(url)
+            print("The key is:",open_dict[key])
+            print(url)
+    if response.status_code == 200:
+        print(response.text,"\n")
+
 def main():
     print("Hello User!\n")
     open_tab = {}
     #showMenu()
     #choice = eval(input("Select from the above:\t"))#User input
     choice = 0 
-    order_of_tabs = []
+    #order_of_tabs = []
     while choice != 9:
         showMenu()
         choice = eval(input("Select from the above:\t"))#User input
         if choice == 1:
             openTab(open_tab)
-            order_of_tabs.append(1)
+            #order_of_tabs.append(1)
             print(open_tab) #THIS MUST BE COMMENTED
             #print(order_of_tabs) shows the list and numbers of tabs opened
         elif choice == 2:
