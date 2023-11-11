@@ -1,4 +1,4 @@
-import requests #used for the "switch tab" case
+import requests #used for the "switch tab" case;install requests library on PC 
 
 def showMenu(): #Function to display the menu at the beginning
     print("1-\tOpen Tab\n" + "2-\tClose Tab\n" + "3-\tSwitch Tab\n" + "4-\tDisplay All Tabs\n" + "5-\tOpen Nested Tab\n" + "6-\tClear All Tabs\n" + "7-\tSave Tabs\n" + "8-\tImport Tabs\n" + "9-\tExit\n")
@@ -31,14 +31,17 @@ def closeTab(open_dict):
     
 def switchTab(open_dict):
     switch = input("Which tab do you want to switch to:")
-    tab_switched = []
-    for i in open_dict:
-        if switch == i:
-            for value in open_dict.items():
-                response = requests.get(value)
-                print(response)
+    #tab_switched = []
+    for key in open_dict:
+        if switch == key:
+            url = open_dict[key]
+            if url:
+                url2 = url[0]
+                response = requests.get(url2)
+            #print(response)
+            if response.status_code == 200:
+                print(response.text)
             
-    
 def main():
     print("Hello User!\n")
     open_tab = {}
