@@ -50,7 +50,6 @@ def switchTab(open_dict):
     if response.status_code == 200: #This condition (==200) ensures that a condition is OK or satisfied(Just like the "404" states for ERROR!)
         print(response.text,"\n")
     
-        
 def displayAll(open_dict):
     for key in open_dict.items():#O(N)
         print("Tabs opened:\n",key[0])
@@ -79,15 +78,6 @@ def importTabs():
     file = open(path_of_file)#Reference: medium.com; use open function to open a file
     content = file.read()#Read the content of the file
     print("Tabs content:\n",content)
-    
-#def nestedTabs(open_dict):
- #   index = input("Enter the index of the parent tab: ")
-  #  parent_tab = tabs[int(index)]
-   # nested_tabs = []
-    #num_nested_tabs = int(input("Enter the number of nested tabs to create: "))
-
-    
-    
     
 def main():
     print("Hello User!\n")
