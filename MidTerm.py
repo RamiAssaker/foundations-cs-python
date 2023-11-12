@@ -42,7 +42,7 @@ def switchTab(open_dict):
         print("The switch is:",switch)#TO BE COMMENTED
         if switch == key:
             url = open_dict[key][0]
-            response = requests.get(url)
+            response = requests.get(url)#a GET request to get the url (syntax used to send HTTP requests)
             print("The key  value is:",open_dict[key])#TO BE COMMENTED
             print(url)#TO BE COMMENTED
         else:
@@ -55,10 +55,17 @@ def switchTab(open_dict):
         
 def displayAll(open_dict):
     for key in open_dict.items():
-        #print("Tabs opened:\n",key[0])
-        tabs_opened = key[0]
-        key += 1
-    print("Tabs opened:\n",tabs_opened)
+        print("Tabs opened:\n",key[0])
+
+def clearTabs(open_dict):
+    clear_tab = []#we need a list to insert the key we want to delete since we cannot delete from dictionary during iteration(error:dictionary changed size during iteration )
+    for i in open_dict:
+        clear_tab.append(i)#append what is in index i to the list "clear_tab"
+    for j in clear_tab:
+        if j in open_dict:
+            del open_dict[j]
+    print("All tabs cleared")
+    print(open_dict)#TO BE DELETED
 
 
 def main():
@@ -83,6 +90,8 @@ def main():
             switchTab(open_tab)
         elif choice ==4:
             displayAll(open_tab)
+        elif choice == 6:
+            clearTabs(open_tab)
         
             
             
