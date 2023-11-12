@@ -20,7 +20,7 @@ def openTab(open_dict): #Function to display that a tab is opened
     #if we print the dictionary: {'google': ['google.com']} 
 
 def closeTab(open_dict):
-    close = input("Which tab would you like to close:")
+    close = input("Which tab would you like to close:\n")
     tabs_delete = [] #we need a list to insert the key we want to delete since we cannot delete from dictionary during iteration(error:dictionary changed size during iteration ) 
     for i in open_dict:
         if close == i:
@@ -43,15 +43,18 @@ def switchTab(open_dict):
         if switch == key:
             url = open_dict[key][0]
             response = requests.get(url)#a GET request to get the url (syntax used to send HTTP requests)
+            open_dict[key] = response.text #####
             print("The key  value is:",open_dict[key])#TO BE COMMENTED
             print(url)#TO BE COMMENTED
         else:
             url = open_dict[key][-1]
             response = requests.get(url)
+            open_dict[key] = response.text #####
             print("The key is:",open_dict[key])#TO BE COMMENTED
             print(url)#TO BE COMMENTED
     if response.status_code == 200: #This condition (==200) ensures that a condition is OK or satisfied(Just like the "404" states for ERROR!)
         print(response.text,"\n")
+    
         
 def displayAll(open_dict):
     for key in open_dict.items():
@@ -70,8 +73,11 @@ def clearTabs(open_dict):
 
 def saveTabs(open_dict):
     file_path = input("Enter file path of format '/<path>/<path>.json':")
-    with open(file_path,'w') as json_file:
+    with open(file_path,'w') as json_file:#"with" statement ensures that the file is closed after operation
+    #open a file specified in the file path('w' indicates the parameter to be in write mode)
+    #This file is opened as JSON file in order to interact with the file
         json.dump(open_dict, json_file)
+        #"json.dump" helps write the dictionary content to the "json_file"
         
     
 
