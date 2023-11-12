@@ -12,7 +12,7 @@ def openTab(open_dict): #Function to display that a tab is opened
     url_string = 'https://'
     if url[0:8] != url_string:#Checking if the user input has "https://
         print("Please use the format 'https://'")
-        openTab(open_dict)#Incase no "https://" format, then call the openTab function to start all over again until a correct user input
+        openTab(open_dict)#Incase no "https://" format, then call the openTab function to start all over again until a correct user input is inserted
     else:
         open_dict[title] = [url] #add to the dict the "key" title with its value which is from the user input
         print("\n",title1,"tab opened\n")
@@ -30,12 +30,12 @@ def closeTab(open_dict):
     for j in tabs_delete: #iterating through the list
         if j in open_dict: #double verification of what must be deleted, (if it is in the dictionary -->delete)
             del open_dict[j]
-        else:
-            print("No webpage found. Please insert an opened tab\n")
+        #else:
+         #   print("No webpage found. Please insert an opened tab\n")
     print(open_dict)
     
 def switchTab(open_dict):
-    switch = input("Which tab do you want to switch to:")
+    switch = input("Which tab do you want to display its content:")
     #tab_switched = []
     for key in open_dict:
         print("The key is:",key)#TO BE COMMENTED
@@ -50,7 +50,7 @@ def switchTab(open_dict):
             response = requests.get(url)
             print("The key is:",open_dict[key])#TO BE COMMENTED
             print(url)#TO BE COMMENTED
-    if response.status_code == 200:
+    if response.status_code == 200: #This condition (==200) ensures that a condition is OK or satisfied(Just like the "404" states for ERROR!)
         print(response.text,"\n")
         
 def displayAll(open_dict):
@@ -66,6 +66,7 @@ def clearTabs(open_dict):
             del open_dict[j]
     print("All tabs cleared")
     print(open_dict)#TO BE DELETED
+    #Concerning this feature, we can create a while loop incase after pressing "6" and after clearing all tabs, if the user presses "6" again, it will display that there are no tabs to clear
 
 
 def main():
