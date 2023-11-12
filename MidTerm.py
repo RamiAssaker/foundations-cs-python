@@ -83,11 +83,14 @@ def saveTabs(open_dict):
     
 def importTabs():
     path_of_file = input("Enter file path: ")
-    file = open(path_of_file)#Reference: medium.com; use open function to open a file
-    content = file.read()#Read the content of the file
+    #file = open(path_of_file)#Reference: medium.com; use open function to open a file
+    #content = file.read()#Read the content of the file
+    with open(file_path, 'r') as file:
+        content = file.read()
     print("Tabs content:\n",content)
     
 def nestedTabs(open_dict):
+    
     
     
 def main():
