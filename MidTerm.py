@@ -72,6 +72,7 @@ def saveTabs(open_dict):
     #This file is opened as JSON file in order to interact with the file
         json.dump(open_dict, json_file)
         #"json.dump" helps write the dictionary content to the "json_file"
+    #Reference: university exercises
     
 def importTabs():
     path_of_file = input("Enter file path: ")
