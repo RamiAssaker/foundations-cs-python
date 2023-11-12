@@ -38,22 +38,15 @@ def closeTab(open_dict):
     
 def switchTab(open_dict):
     switch = input("Which tab do you want to display its content:")
-    #tab_switched = []
     for key in open_dict:#O(N)
-        print("The key is:",key)#TO BE COMMENTED
-        print("The switch is:",switch)#TO BE COMMENTED
         if switch == key:
             url = open_dict[key][0]
             response = requests.get(url)#a GET request to get the url (syntax used to send HTTP requests)
             open_dict[key] = response.text #Adding the HTML to the dictionary in order to use when using "savetab"
-            print("The key  value is:",open_dict[key])#TO BE COMMENTED
-            print(url)#TO BE COMMENTED
         else:
             url = open_dict[key][-1]
             response = requests.get(url)
             open_dict[key] = response.text #Adding the HTML to the dictionary in order to use when using "savetab"
-            print("The key is:",open_dict[key])#TO BE COMMENTED
-            print(url)#TO BE COMMENTED
     if response.status_code == 200: #This condition (==200) ensures that a condition is OK or satisfied(Just like the "404" states for ERROR!)
         print(response.text,"\n")
     
@@ -70,7 +63,6 @@ def clearTabs(open_dict):
         if j in open_dict:
             del open_dict[j]
     print("All tabs cleared")
-    print(open_dict)#TO BE DELETED
     #Concerning this feature, we can create a while loop incase after pressing "6" and after clearing all tabs, if the user presses "6" again, it will display that there are no tabs to clear
     #final Big O = O(N)
 
@@ -100,18 +92,14 @@ def nestedTabs(open_dict):
 def main():
     print("Hello User!\n")
     open_tab = {}
-    #showMenu()
-    #choice = eval(input("Select from the above:\t"))#User input
     choice = 0 
-    #order_of_tabs = []
     while choice != 9:
         print("")
         showMenu()
         choice = eval(input("Select from the above:\t"))#User input
         if choice == 1:
             openTab(open_tab)
-            #order_of_tabs.append(1)
-            print(open_tab) #THIS MUST BE COMMENTED
+            #print(open_tab) #THIS MUST BE COMMENTED
             #print(order_of_tabs) shows the list and numbers of tabs opened
         elif choice == 2:
             closeTab(open_tab)
