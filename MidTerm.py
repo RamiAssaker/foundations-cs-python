@@ -80,11 +80,11 @@ def importTabs():
     content = file.read()#Read the content of the file
     print("Tabs content:\n",content)
     
-def nestedTabs(open_dict):
-    index = input("Enter the index of the parent tab: ")
-    parent_tab = tabs[int(index)]
-    nested_tabs = []
-    num_nested_tabs = int(input("Enter the number of nested tabs to create: "))
+#def nestedTabs(open_dict):
+ #   index = input("Enter the index of the parent tab: ")
+  #  parent_tab = tabs[int(index)]
+   # nested_tabs = []
+    #num_nested_tabs = int(input("Enter the number of nested tabs to create: "))
 
     
     
@@ -99,8 +99,6 @@ def main():
         choice = eval(input("Select from the above:\t"))#User input
         if choice == 1:
             openTab(open_tab)
-            #print(open_tab) #THIS MUST BE COMMENTED
-            #print(order_of_tabs) shows the list and numbers of tabs opened
         elif choice == 2:
             closeTab(open_tab)
         elif choice == 3:
