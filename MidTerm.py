@@ -39,7 +39,7 @@ def closeTab(open_dict):
 def switchTab(open_dict):
     switch = input("Which tab do you want to display its content:")
     #tab_switched = []
-    for key in open_dict:
+    for key in open_dict:#O(N)
         print("The key is:",key)#TO BE COMMENTED
         print("The switch is:",switch)#TO BE COMMENTED
         if switch == key:
@@ -59,19 +59,20 @@ def switchTab(open_dict):
     
         
 def displayAll(open_dict):
-    for key in open_dict.items():
+    for key in open_dict.items():#O(N)
         print("Tabs opened:\n",key[0])
 
 def clearTabs(open_dict):
     clear_tab = []#we need a list to insert the key we want to delete since we cannot delete from dictionary during iteration(error:dictionary changed size during iteration )
-    for i in open_dict:
+    for i in open_dict:#O(N)
         clear_tab.append(i)#append what is in index i to the list "clear_tab"
-    for j in clear_tab:
+    for j in clear_tab:#O(N)
         if j in open_dict:
             del open_dict[j]
     print("All tabs cleared")
     print(open_dict)#TO BE DELETED
     #Concerning this feature, we can create a while loop incase after pressing "6" and after clearing all tabs, if the user presses "6" again, it will display that there are no tabs to clear
+    #final Big O = O(N)
 
 def saveTabs(open_dict):
     file_path = input("Enter file path of format '/<path>/<path>.json':")
@@ -88,7 +89,11 @@ def importTabs():
     print("Tabs content:\n",content)
     
 def nestedTabs(open_dict):
-    
+    index = input("Enter the index of the parent tab: ")
+    parent_tab = tabs[int(index)]
+    nested_tabs = []
+    num_nested_tabs = int(input("Enter the number of nested tabs to create: "))
+
     
     
     
