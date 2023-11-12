@@ -55,8 +55,10 @@ def switchTab(open_dict):
         
 def displayAll(open_dict):
     for key in open_dict.items():
-        #tabs_opened = 
-        print("Tabs opened:\n",key[0])
+        #print("Tabs opened:\n",key[0])
+        tabs_opened = key[0]
+        key += 1
+    print("Tabs opened:\n",tabs_opened)
 
 
 def main():
