@@ -1,5 +1,5 @@
 import requests #used for the "switch tab" case;install requests library on PC 
-
+import json#used to have access and be able to read json files
 def showMenu(): #Function to display the menu at the beginning
     print("1-\tOpen Tab\n" + "2-\tClose Tab\n" + "3-\tSwitch Tab\n" + "4-\tDisplay All Tabs\n" + "5-\tOpen Nested Tab\n" + "6-\tClear All Tabs\n" + "7-\tSave Tabs\n" + "8-\tImport Tabs\n" + "9-\tExit\n")
 
@@ -68,6 +68,12 @@ def clearTabs(open_dict):
     print(open_dict)#TO BE DELETED
     #Concerning this feature, we can create a while loop incase after pressing "6" and after clearing all tabs, if the user presses "6" again, it will display that there are no tabs to clear
 
+def saveTabs(open_dict):
+    file_path = input("Enter file path of format '/<path>/<path>.json':")
+    with open(file_path,'w') as json_file:
+        json.dump(open_dict, json_file)
+        
+    
 
 def main():
     print("Hello User!\n")
@@ -93,6 +99,9 @@ def main():
             displayAll(open_tab)
         elif choice == 6:
             clearTabs(open_tab)
+        elif choice == 7:
+            saveTabs(open_tab)
+            
         
             
             
