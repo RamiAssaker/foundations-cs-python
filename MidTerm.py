@@ -8,10 +8,15 @@ def openTab(open_dict): #Function to display that a tab is opened
     for i in title: #O(n)
         if title[0].islower():
             title1 = title[0].upper() + title[1:] #changing the first letter to capital incase it was lower case
-    url = input("Enter the URL of the Website:\n")
-    open_dict[title] = [url] #add to the dict the "key" title with its value which is from the user input
-    print("\n",title1,"tab opened\n")
-    return open_dict
+    url = input("Enter the URL of the Website of the form 'https://website.com' :\n")
+    url_string = 'https://'
+    if url[0:8] != url_string:#Checking if the user input has "https://
+        print("Please use the format 'https://'")
+        openTab(open_dict)#Incase no "https://" format, then call the openTab function to start all over again until a correct user input
+    else:
+        open_dict[title] = [url] #add to the dict the "key" title with its value which is from the user input
+        print("\n",title1,"tab opened\n")
+        return open_dict
     #if we print the dictionary: {'google': ['google.com']} 
 
 def closeTab(open_dict):
@@ -33,20 +38,26 @@ def switchTab(open_dict):
     switch = input("Which tab do you want to switch to:")
     #tab_switched = []
     for key in open_dict:
-        print("The key is:",key)
-        print("The switch is:",switch)
+        print("The key is:",key)#TO BE COMMENTED
+        print("The switch is:",switch)#TO BE COMMENTED
         if switch == key:
             url = open_dict[key][0]
             response = requests.get(url)
-            print("The key  value is:",open_dict[key])
-            print(url)
+            print("The key  value is:",open_dict[key])#TO BE COMMENTED
+            print(url)#TO BE COMMENTED
         else:
             url = open_dict[key][-1]
             response = requests.get(url)
-            print("The key is:",open_dict[key])
-            print(url)
+            print("The key is:",open_dict[key])#TO BE COMMENTED
+            print(url)#TO BE COMMENTED
     if response.status_code == 200:
         print(response.text,"\n")
+        
+def displayAll(open_dict):
+    for key in open_dict.items():
+        #tabs_opened = 
+        print("Tabs opened:\n",key[0])
+
 
 def main():
     print("Hello User!\n")
@@ -56,6 +67,7 @@ def main():
     choice = 0 
     #order_of_tabs = []
     while choice != 9:
+        print("")
         showMenu()
         choice = eval(input("Select from the above:\t"))#User input
         if choice == 1:
@@ -67,6 +79,8 @@ def main():
             closeTab(open_tab)
         elif choice == 3:
             switchTab(open_tab)
+        elif choice ==4:
+            displayAll(open_tab)
         
             
             
