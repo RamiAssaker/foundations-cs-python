@@ -43,13 +43,13 @@ def switchTab(open_dict):
         if switch == key:
             url = open_dict[key][0]
             response = requests.get(url)#a GET request to get the url (syntax used to send HTTP requests)
-            open_dict[key] = response.text #####
+            open_dict[key] = response.text #Adding the HTML to the dictionary in order to use when using "savetab"
             print("The key  value is:",open_dict[key])#TO BE COMMENTED
             print(url)#TO BE COMMENTED
         else:
             url = open_dict[key][-1]
             response = requests.get(url)
-            open_dict[key] = response.text #####
+            open_dict[key] = response.text #Adding the HTML to the dictionary in order to use when using "savetab"
             print("The key is:",open_dict[key])#TO BE COMMENTED
             print(url)#TO BE COMMENTED
     if response.status_code == 200: #This condition (==200) ensures that a condition is OK or satisfied(Just like the "404" states for ERROR!)
@@ -79,6 +79,8 @@ def saveTabs(open_dict):
         json.dump(open_dict, json_file)
         #"json.dump" helps write the dictionary content to the "json_file"
         
+def importTabs(open_dict):
+    path_of_file = input("Enter file path: ")
     
 
 def main():
